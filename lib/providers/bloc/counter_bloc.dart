@@ -24,6 +24,7 @@ class CounterBloc extends Bloc<CounterEvent, int>{
        },
 
      /// Apply the custom `EventTransformer` to the `EventHandler`.
+     // transformer: debounce(const Duration(minutes: 1)),
      transformer: debounce(const Duration(milliseconds: 300)),
    );
   }

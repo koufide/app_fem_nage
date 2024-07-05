@@ -49,7 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
   //TODO FLUTTER SIZE A IMPLEMENTER
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONNEXION'),
@@ -59,14 +58,20 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Column(
           children: [
-            BlocListener<CounterBloc,int>(
-              listener: (context, state) {
-                if(state % 5 == 0 && state !=0){
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Compte est multiple de 5!') ),
-                  );
-                }
-              },
+            MultiBlocListener(
+              listeners: [
+                BlocListener<CounterBloc, int>(
+                  listenWhen: (previous, state) => true,
+                  listener: (context, state) {
+                    if (state % 5 == 0 && state != 0) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Compte est multiple de 5!')),
+                      );
+                    }
+                  },
+                ),
+              ],
               child: BlocBuilder<CounterBloc, int>(
                 buildWhen: (previousState, state) {
                   return true;
@@ -110,9 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           _isLoading
                               ? const CircularProgressIndicator()
                               : ElevatedButton(
-                            onPressed: () => _signIn(context),
-                            child: Text('Login $count'),
-                          )
+                                  onPressed: () => _signIn(context),
+                                  child: Text('Login $count'),
+                                )
                         ],
                       ),
                     ),
@@ -120,7 +125,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
-
           ],
         ),
       ),
