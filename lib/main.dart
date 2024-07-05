@@ -94,6 +94,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print("==> MyApp.build =>>> build");
+
     return MaterialApp(
       title: 'Gestion des femmes de menage',
       theme: ThemeData(
@@ -102,10 +104,23 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       // routes: appRoutes,
-      home: BlocProvider(
-        create: (context) => CounterBloc(),
+
+      // home: BlocProvider(
+      //   lazy: false,
+      //   create: (context) => CounterBloc(),
+      //   child: const LoginScreen(),
+      // ),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (BuildContext context) => CounterBloc(),
+          ),
+        ],
         child: const LoginScreen(),
+
       ),
+
+
       // home: const MyHomePage(title: 'Gestion des servantes'),
     );
   }

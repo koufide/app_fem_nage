@@ -49,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //TODO FLUTTER SIZE A IMPLEMENTER
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('CONNEXION'),
@@ -56,54 +57,71 @@ class _LoginScreenState extends State<LoginScreen> {
         titleTextStyle: TextStyle(color: Colors.white),
       ),
       body: Center(
-        child: BlocBuilder<CounterBloc, int>(
-          builder: (context, count) {
-            //return Text('Valeur du compteur $count');
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: _telController,
-                      decoration: const InputDecoration(
-                        labelText: 'Telephone',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Merci de saisir votre numero de Telephone ';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: '$count',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Merci de saisir votre mot de passe';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    _isLoading
-                        ? const CircularProgressIndicator()
-                        : ElevatedButton(
+        child: Column(
+          children: [
+            BlocListener<CounterBloc,int>(
+              listener: (context, state) {
+                if(state % 5 == 0 && state !=0){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Compte est multiple de 5!') ),
+                  );
+                }
+              },
+              child: BlocBuilder<CounterBloc, int>(
+                buildWhen: (previousState, state) {
+                  return true;
+                },
+                builder: (context, count) {
+                  //return Text('Valeur du compteur $count');
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: _telController,
+                            decoration: const InputDecoration(
+                              labelText: 'Telephone',
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Merci de saisir votre numero de Telephone ';
+                              }
+                              return null;
+                            },
+                          ),
+                          TextFormField(
+                            controller: _passwordController,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              hintText: '$count',
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Merci de saisir votre mot de passe';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          _isLoading
+                              ? const CircularProgressIndicator()
+                              : ElevatedButton(
                             onPressed: () => _signIn(context),
                             child: Text('Login $count'),
                           )
-                  ],
-                ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
