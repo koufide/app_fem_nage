@@ -13,21 +13,31 @@ class AuthService {
       Uri url = Uri.parse('$baseUrl/users?tel=$tel&password=$password');
 
       final response = await http.get(url);
-      print("==> AuthService.signIn ==> response");
+      print("==> AuthService.signIn ==> response ${response.body}");
 
-      if (response.statusCode == 200) {
-        final List<dynamic> users = jsonDecode(response.body);
-        if (users.isNotEmpty) {
-          print("==> AuthService.signIn =>> $users.first");
-          return users.first;
+      // if (response.statusCode == 200) {
+        final List jsonUsers = jsonDecode(response.body);
+        if(jsonUsers.isNotEmpty){
+          final Map<String,dynamic> jsonUser =jsonUsers.first;
+        print("==> AuthService.signIn ==> jsonUser $jsonUser");
+          return jsonUser;
         }
-      }else{
-        print("==> AuthService.signIn =>> $response.statusCode ");
-      }
+        // jsonDecode(response.body);
+
+
+        // if (users.isNotEmpty) {
+          // print("==> AuthService.signIn =>> $users.first");
+          return null;
+          // return users.first;
+        // }
+      // }else{
+      //   print("==> AuthService.signIn =>> $response.statusCode ");
+      // }
       return null;
     } catch (e) {
-      print("==> AuthService.signIn =>> ");
+      print("==> AuthService.signIn Erreur =>> ");
       print(e.toString());
+      print(e);
       return null;
     }
   } // signIn
