@@ -1,4 +1,5 @@
 import 'package:app_fem_nage/providers/auth_provider.dart';
+import 'package:app_fem_nage/providers/bloc/counter_bloc.dart';
 import 'package:app_fem_nage/providers/counter_stream.dart';
 import 'package:app_fem_nage/providers/cubit/counter_cubit.dart';
 import 'package:app_fem_nage/providers/cubit/simple_bloc_observer.dart';
@@ -61,6 +62,15 @@ void main() async {
 
   // print("==> main =>> cubitA.state =>>> ${cubitA.state}");
   // print("==> main =>> cubitB.state =>>> ${cubitB.state}");
+  print("===================================");
+
+  final blocC = CounterBloc();
+  print("==> main =>> blocC.state =>>> ${blocC.state}");
+  blocC.add(CounterIncrementPressed());
+  await Future.delayed(Duration.zero);
+  print("==> main =>> blocC.state =>>> ${blocC.state}");
+  await blocC.close();
+
 
 
 
