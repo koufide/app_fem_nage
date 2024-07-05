@@ -1,11 +1,17 @@
 
 import 'package:bloc/bloc.dart';
+import 'package:stream_transform/stream_transform.dart';
+import 'package:rxdart/rxdart.dart';
 
 sealed class CounterEvent {}
 
 final class CounterIncrementPressed extends CounterEvent {}
 
 class CounterBloc extends Bloc<CounterEvent, int>{
+
+  EventTransformer<T> debounce<T>(Duration duration){
+    return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
+  }
 
   // CounterBloc(super.initialState);
   CounterBloc(): super(0){
@@ -15,7 +21,10 @@ class CounterBloc extends Bloc<CounterEvent, int>{
          // addError(Exception('increment error!'), StackTrace.current);
 
          emit(state+1);
-       }
+       },
+
+     /// Apply the custom `EventTransformer` to the `EventHandler`.
+     transformer: debounce(const Duration(milliseconds: 300)),
    );
   }
 
