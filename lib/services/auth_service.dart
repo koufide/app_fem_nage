@@ -4,14 +4,17 @@ import 'package:http/http.dart' as http;
 
 //CREER UNE CONSTANTE POUR LA BASE URL
 class AuthService {
-  final String baseUrl = 'http://localhost:3000';
+  // final String baseUrl = 'http://localhost:3000';
+  final String baseUrl = 'http://10.225.83.66:3000';
 
   Future<Map<String, dynamic>?> signIn(String tel, String password) async {
     try {
-      // print("==> AuthService.signIn ==> $tel $password");
+      print("==> AuthService.signIn ==> $tel $password");
       Uri url = Uri.parse('$baseUrl/users?tel=$tel&password=$password');
 
       final response = await http.get(url);
+      print("==> AuthService.signIn ==> response");
+
       if (response.statusCode == 200) {
         final List<dynamic> users = jsonDecode(response.body);
         if (users.isNotEmpty) {

@@ -52,7 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Connexion'),
+        title: const Text('CONNEXION'),
+        backgroundColor: Colors.black,
+        titleTextStyle: TextStyle(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
