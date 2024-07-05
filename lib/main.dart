@@ -1,9 +1,71 @@
 import 'package:app_fem_nage/providers/auth_provider.dart';
+import 'package:app_fem_nage/providers/counter_stream.dart';
+import 'package:app_fem_nage/providers/cubit/counter_cubit.dart';
+import 'package:app_fem_nage/providers/cubit/simple_bloc_observer.dart';
+import 'package:app_fem_nage/providers/sum_stream.dart';
 import 'package:app_fem_nage/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:bloc/bloc.dart';
 
-void main() {
+
+void main() async {
+
+  Bloc.observer = SimpleBlocObserver();
+
+
+  /// Initialize a stream of integers 0-9
+  Stream<int> stream = counterStream(10);
+  /// Compute the sum of the stream of integers
+  int sum = await sumStream(stream);
+  /// Print the sum
+  print("==> main.sumStream =>> sum: $sum"); // 45
+
+  final cubitA = CounterCubit(0);
+  final cubitB = CounterCubit(10);
+  // print("==> main =>> cubitA.toString(): $cubitA");
+  // print("==> main =>> cubitB.toString(): $cubitB");
+  // print("==> main =>> cubitA.toString(): " + cubitA.toString());
+  // print("==> main =>> cubitB.toString(): " + cubitB.toString());
+  // print(cubitB.toString());
+
+  print("==> main =>> cubitA.state =>>> ${cubitA.state}");
+  print("==> main =>> cubitB.state =>>> ${cubitB.state}");
+  // print(cubitB.state);
+
+  // print("==> main =>>  cubitA.increment() =>>> "+cubitA.increment);
+  // print("==> main =>>  cubitB.decrement() =>>> ${cubitB.decrement}");
+  cubitA.increment;
+  cubitB.decrement();
+
+  print("==> main =>> cubitA.state =>>> ${cubitA.state}");
+  print("==> main =>> cubitB.state =>>> ${cubitB.state}");
+
+  final subscription = cubitA.stream.listen(print); // 1
+  // final subscription = cubitA.stream.listen(print); // 1
+  cubitA.increment();
+  cubitA.increment();
+  // cubitA.decrement();
+  // await Future.delayed(Duration(seconds: 30)); //attendre 5 secondes
+  await Future.delayed(Duration.zero);
+  cubitA.increment();
+  await subscription.cancel();
+
+  print("==> main =>> cubitA.state =>>> ${cubitA.state}");
+  print("==> main =>> cubitB.state =>>> ${cubitB.state}");
+
+
+
+  await cubitA.close();
+  await cubitB.close();
+
+  // print("==> main =>> cubitA.state =>>> ${cubitA.state}");
+  // print("==> main =>> cubitB.state =>>> ${cubitB.state}");
+
+
+
+
+
   runApp(
     MultiProvider(providers:
     [
