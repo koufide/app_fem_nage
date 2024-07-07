@@ -30,7 +30,6 @@ class CounterView extends StatelessWidget {
                 child: const Icon(Icons.add),
                 onPressed: () => context.read<CounterCubit>().increment(),
               ),
-              // TODO AJOUTER FLUTTER SIZER
               SizedBox(
                 height: Adaptive.h(8),
               ),

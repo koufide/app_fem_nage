@@ -43,6 +43,7 @@ dependencies:
   rxdart: ^0.28.0
   mocktail: ^1.0.4
   responsive_sizer: ^3.3.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

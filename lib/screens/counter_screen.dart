@@ -48,7 +48,6 @@ class _CounterScreenState extends State<CounterScreen> {
     }
   }
 
-  //TODO FLUTTER SIZE A IMPLEMENTER
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +80,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 builder: (context, count) {
                   //return Text('Valeur du compteur $count');
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0.dp),
                     child: Form(
                       key: _formKey,
                       child: Column(
