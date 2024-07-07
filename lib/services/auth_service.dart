@@ -20,31 +20,30 @@ class AuthService {
       print("==> AuthService.signIn ==> response ${response.body}");
 
       // if (response.statusCode == 200) {
-        final List jsonUsers = jsonDecode(response.body);
-        if(jsonUsers.isNotEmpty){
-          final Map<String,dynamic> jsonUser =jsonUsers.first;
+      final List jsonUsers = jsonDecode(response.body);
+      if (jsonUsers.isNotEmpty) {
+        final Map<String, dynamic> jsonUser = jsonUsers.first;
         print("==> AuthService.signIn ==> jsonUser $jsonUser");
-          return jsonUser;
-        }
-        // jsonDecode(response.body);
+        return jsonUser;
+      }
+      // jsonDecode(response.body);
 
-
-        // if (users.isNotEmpty) {
-          // print("==> AuthService.signIn =>> $users.first");
-          return null;
-          // return users.first;
-        // }
+      // if (users.isNotEmpty) {
+      // print("==> AuthService.signIn =>> $users.first");
+      // return null;
+      // return users.first;
+      // }
       // }else{
       //   print("==> AuthService.signIn =>> $response.statusCode ");
       // }
       return null;
-    } on http.ClientException catch (e) {
-      print("==> AuthService.signIn ClientException Probleme de reseaux =>> ");
-      // print("==> AuthService.signIn Response =>> $response");
-      // print(e.toString());
-      print(e);
-      return null;
-    } catch (e, s ){
+    // } on http.ClientException catch (e) {
+    //   print("==> AuthService.signIn ClientException Probleme de reseaux =>> ");
+    //   // print("==> AuthService.signIn Response =>> $response");
+    //   // print(e.toString());
+    //   print(e);
+    //   return null;
+    } catch (e, s) {
       print("==> AuthService.signIn Exception details =>> $e");
       print("==> AuthService.signIn Exception STack trace =>> $s");
       return null;

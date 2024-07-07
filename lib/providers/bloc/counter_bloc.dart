@@ -5,6 +5,7 @@ import 'package:rxdart/rxdart.dart';
 sealed class CounterEvent {}
 
 final class CounterIncrementPressed extends CounterEvent {}
+final class CounterDiscrincrementPressed extends CounterEvent {}
 
 class CounterBloc extends Bloc<CounterEvent, int>{
 
@@ -16,9 +17,7 @@ class CounterBloc extends Bloc<CounterEvent, int>{
   CounterBloc(): super(0){
    on<CounterIncrementPressed>(
        (event, emit){
-
          // addError(Exception('increment error!'), StackTrace.current);
-
          emit(state+1);
        },
 
@@ -26,6 +25,15 @@ class CounterBloc extends Bloc<CounterEvent, int>{
      // transformer: debounce(const Duration(minutes: 1)),
      transformer: debounce(const Duration(milliseconds: 300)),
    );
+
+   on<CounterDiscrincrementPressed>(
+       (event, emit){
+         emit(state-1);
+       },
+     transformer: debounce(const Duration(seconds: 0) ),
+   );
+
+
   }
 
   @override
