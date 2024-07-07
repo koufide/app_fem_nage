@@ -5,7 +5,10 @@ import 'package:http/http.dart' as http;
 //CREER UNE CONSTANTE POUR LA BASE URL
 class AuthService {
   // final String baseUrl = 'http://localhost:3000';
-  final String baseUrl = 'http://10.225.83.66:3000';
+  final String baseUrl = 'http://0.0.0.0:3000';
+  // final String baseUrl = 'http://10.225.83.66:3000';
+
+  final response = null;
 
   Future<Map<String, dynamic>?> signIn(String tel, String password) async {
     try {
@@ -36,7 +39,8 @@ class AuthService {
       return null;
     } catch (e) {
       print("==> AuthService.signIn Erreur =>> ");
-      print(e.toString());
+      // print("==> AuthService.signIn Response =>> $response");
+      // print(e.toString());
       print(e);
       return null;
     }

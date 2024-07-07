@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: const Text('CONNEXION'),
         backgroundColor: Colors.black,
-        titleTextStyle: TextStyle(color: Colors.white),
+        titleTextStyle: const TextStyle(color: Colors.white),
       ),
       body: Center(
         child: Column(
