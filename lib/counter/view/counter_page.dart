@@ -1,5 +1,4 @@
 import 'package:app_fem_nage/counter/counter.dart';
-import 'package:app_fem_nage/counter/view/counter_view.dart';
 // import 'package:app_fem_nage/providers/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
