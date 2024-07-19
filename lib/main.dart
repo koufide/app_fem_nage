@@ -4,12 +4,10 @@ import 'package:app_fem_nage/providers/counter_stream.dart';
 import 'package:app_fem_nage/providers/cubit/counter_cubit.dart';
 import 'package:app_fem_nage/providers/cubit/simple_bloc_observer.dart';
 import 'package:app_fem_nage/providers/sum_stream.dart';
-import 'package:app_fem_nage/routes.dart';
 import 'package:app_fem_nage/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:bloc/bloc.dart';
 
 
 void main() async {

@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 class CounterCubit extends Cubit<int> {
   // CounterCubit():super(0); // appel le constructeur parent avec l etat 0
   // CounterCubit(super.initialState);
-  CounterCubit(int initialState): super(initialState);
+  CounterCubit(super.initialState);
 
   void increment() => emit(state + 1);
   void decrement() {
