@@ -12,18 +12,25 @@ sealed class TimerState extends Equatable {
 final class TimerInitial extends TimerState {
   const TimerInitial(super.duration);
 
-
   @override
-  String toString => '=> timer_state.TimerInitial =>> {duration : $duration} ';
+  String toString() {
+    return '=> timer_state.TimerInitial =>> {duration : $duration} ';
+  }
+
+
+// String toString => '';
 }
 
 
 
-final class TimerPaused extends TimerState {
-  const TimerPaused(super.duration);
+final class TimerRunPause extends TimerState {
+  const TimerRunPause(super.duration);
 
   @override
-  String toString => '=> timer_state.TimerPaused =>> {duration : $duration} ';
+  String toString() {
+    return '=> timer_state.TimerPaused =>> {duration : $duration} ';
+  }
+// String toString => '';
 }
 
 

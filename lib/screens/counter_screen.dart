@@ -2,6 +2,7 @@ import 'package:app_fem_nage/providers/auth_provider.dart';
 import 'package:app_fem_nage/providers/bloc/counter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 
 class CounterScreen extends StatefulWidget {
@@ -80,7 +81,7 @@ class _CounterScreenState extends State<CounterScreen> {
                 builder: (context, count) {
                   //return Text('Valeur du compteur $count');
                   return Padding(
-                    padding: const EdgeInsets.all(16.0.dp),
+                    padding: EdgeInsets.all(16.0.dp),
                     child: Form(
                       key: _formKey,
                       child: Column(
