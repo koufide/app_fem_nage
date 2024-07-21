@@ -7,4 +7,5 @@ class Ticker {
       (computationCount) => ticks - computationCount - 1,
     ).take(ticks);
   } //tick
+
 } //Ticker

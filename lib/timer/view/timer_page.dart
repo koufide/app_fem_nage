@@ -5,19 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TimerPage extends StatelessWidget {
-  const TimerPage({Key? key}) : super(key: key);
+  const TimerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => TimerBloc(ticker: const Ticker()),
-      child: const TimerView(),
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (_) => TimerBloc(ticker: const Ticker()),
+          )
+        ],
+        child: const TimerView(),
     );
   }
+
+
 }
 
 class TimerView extends StatelessWidget {
-  const TimerView({Key? key}) : super(key: key);
+  const TimerView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +52,7 @@ class TimerView extends StatelessWidget {
 }
 
 class TimerText extends StatelessWidget {
-  const TimerText({Key? key}) : super(key: key);
+  const TimerText({super.key});
 
   @override
   Widget build(BuildContext context) {
