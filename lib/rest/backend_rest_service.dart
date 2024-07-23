@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:app_fem_nage/models/session.dart';
-import 'package:app_fem_nage/models/user.dart';
 import 'package:app_fem_nage/rest/backend_service.dart';
 import 'package:http/http.dart';
 
