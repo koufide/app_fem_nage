@@ -6,19 +6,25 @@ part 'location.g.dart';
 class Location {
 
 
-  const Location({
+   Location({
     required this.id,
     required this.name,
     required this.latitude,
     required this.longitude,
 });
 
-  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
-
-
 
   final int id;
   final String name;
   final double latitude;
   final double longitude;
+
+
+  /// Connect the generated [_$PersonFromJson] function to the `fromJson`
+  /// factory.
+  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
+
+  /// Connect the generated [_$PersonToJson] function to the `toJson` method.
+  // Map<String, dynamic> toJson() => _$LocationToJson(this);
+
 }

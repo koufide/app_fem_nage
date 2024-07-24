@@ -1,6 +1,6 @@
 library open_meteo_api;
 
-import 'src/models/models.dart';
+export 'src/models/models.dart';
 // /// A Calculator.
 // class Calculator {
 //   /// Returns [value] plus 1.
