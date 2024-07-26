@@ -1,30 +1,20 @@
-name: open_meteo_api
+name: weather_repository
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
 
 environment:
-  sdk: ^3.6.0-55.0.dev
+  sdk: ^3.6.0-72.0.dev
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.0
-  json_annotation: ^4.9.0
-  mocktail: ^1.0.4
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  test: ^1.25.8
-  analyzer: ^6.7.0
-  build_runner: ^2.3.3
-  json_serializable: ^6.8.0
-
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
