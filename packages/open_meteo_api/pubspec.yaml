@@ -1,28 +1,33 @@
 name: open_meteo_api
-description: "A new Flutter package project."
+description: "A Dart API Client for the Open-Meteo API"
 version: 0.0.1
-homepage:
+#version: 1.0.0+1
+#homepage:
 
 environment:
   sdk: ^3.6.0-55.0.dev
-  flutter: ">=1.17.0"
+#  sdk: ">=3.0.0 <4.0.0"
+#  flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-  http: ^0.13.0
+  equatable: ^2.0.5
+#  flutter:
+#    sdk: flutter
+#  http: ^0.13.0
+  http: ^1.2.2
   json_annotation: ^4.9.0
-  mocktail: ^1.0.4
 
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^4.0.0
-  test: ^1.25.8
-  analyzer: ^6.7.0
+  coverage: ^1.8.0
   build_runner: ^2.3.3
   json_serializable: ^6.8.0
+  mocktail: ^1.0.4
+  test: ^1.25.8
+#  flutter_test:
+#    sdk: flutter
+#  flutter_lints: ^4.0.0
+  analyzer: ^6.8.0
 
 
 
